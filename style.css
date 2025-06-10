@@ -1,0 +1,249 @@
+/* This CSS file defines the visual styles for the Mountain Animation website. */
+/* It controls colors, fonts, layout, and animations. */
+
+/* :root defines CSS variables that can be reused throughout the stylesheet. */
+/* This helps maintain consistency and makes it easy to change values globally. */
+:root {
+    /* Color Palette: Defines various shades of blue and gray for the design. */
+    --primary-blue: #4A90E2;
+    --secondary-blue: #357ABD;
+    --accent-blue: #6BA3F5;
+    --light-blue: #E8F4FD;
+    
+    --primary-gray: #2C3E50;
+    --secondary-gray: #34495E;
+    --light-gray: #7F8C8D;
+    --lighter-gray: #BDC3C7;
+    --background-gray: #1A1A1A;
+    --surface-gray: #2A2A2A;
+    
+    /* Text Colors: Defines colors for different text elements. */
+    --text-primary: #FFFFFF;
+    --text-secondary: #BDC3C7;
+    --text-muted: #7F8C8D;
+    
+    /* Typography Settings: Defines font family, sizes, and weights. */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-size-base: 16px;
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* Spacing Units: Defines consistent spacing values for margins and padding. */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+    --spacing-3xl: 6rem;
+    
+    /* Layout Properties: Defines maximum width for containers and border-radius for rounded corners. */
+    --container-max-width: 1400px;
+    --border-radius: 12px;
+    --border-radius-sm: 8px;
+    --border-radius-lg: 16px;
+    
+    /* Shadow Effects: Defines different levels of box shadows. */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+    
+    /* Transition Durations: Defines speeds for smooth transitions between states. */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* Global Reset: Applies basic styling resets to all HTML elements. */
+/* This ensures consistent rendering across different web browsers. */
+* {
+    /* box-sizing: border-box ensures that padding and border are included in the element's total width and height. */
+    box-sizing: border-box;
+    /* Removes default margins and paddings from all elements. */
+    margin: 0;
+    padding: 0;
+}
+
+/* html defines styles for the root element of the page. */
+html {
+    /* scroll-behavior: smooth makes scrolling within the page smooth rather than instant. */
+    scroll-behavior: smooth;
+}
+
+/* body defines the base styles for the entire page content. */
+body {
+    /* Applies the defined font family from :root. */
+    font-family: var(--font-family);
+    /* Sets the base font size. */
+    font-size: var(--font-size-base);
+    /* Sets the default font weight. */
+    font-weight: var(--font-weight-normal);
+    /* Sets the line height for text. */
+    line-height: 1.6;
+    /* Sets the primary text color. */
+    color: var(--text-primary);
+    /* Sets the background color for the entire page. */
+    background-color: var(--background-gray);
+    /* Hides any content that overflows horizontally, preventing unwanted scrollbars. */
+    overflow-x: hidden;
+    /* Uses flexbox to center the content vertically and horizontally on the page. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Ensures the body takes at least the full height of the viewport. */
+    min-height: 100vh;
+}
+
+/* Styles for the container holding the animated map. */
+.map-container {
+    /* Sets the width to 100% of its parent, with a maximum width limit. */
+    width: 100%;
+    max-width: 550px;
+    /* Sets a fixed height for the map container. */
+    height: 650px;
+    /* Applies a semi-transparent blue background. */
+    background: rgba(74, 144, 226, 0.05);
+    /* Applies a large border-radius for rounded corners. */
+    border-radius: var(--border-radius-lg);
+    /* Adds a subtle blue border. */
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    /* Uses flexbox to center its content. */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Positions the container relative to allow absolute positioning of child elements. */
+    position: relative;
+    /* Hides any content that overflows its boundaries. */
+    overflow: hidden;
+}
+
+/* Styles for the SVG element within the map container. */
+.circuit-svg {
+    /* Ensures the SVG fills the entire width and height of its parent container. */
+    width: 100%;
+    height: 100%;
+}
+
+/* Styles for the text that appears when the animation is complete. */
+.animation-completion-text {
+    /* Positions the text absolutely within its parent (.map-container). */
+    position: absolute;
+    text-align: right;
+    /* Places the text at the bottom and right of the container. */
+    bottom: 30px;
+    right: 30px;
+    /* Sets the text color to primary blue. */
+    color: var(--primary-blue);
+    /* Sets a responsive font size. */
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    /* Sets the font weight. */
+    font-weight: var(--font-weight-semibold);
+    /* Initially hidden. */
+    opacity: 0;
+    /* Initially translated down, ready for an upward animation. */
+    transform: translateY(10px);
+    /* Applies a smooth transition for all changes. */
+    transition: all 0.8s ease;
+    /* Prevents the text from being a target for mouse events. */
+    pointer-events: none;
+    /* Adds a subtle text shadow for better readability. */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Styles for when the animation completion text should be visible. */
+.animation-completion-text.show {
+    /* Makes the text fully visible. */
+    opacity: 1;
+    /* Moves the text to its original position. */
+    transform: translateY(0);
+}
+
+/* Styles for when the animation completion text should be hidden. */
+.animation-completion-text.hide {
+    /* Makes the text invisible. */
+    opacity: 0;
+    /* Moves the text slightly down. */
+    transform: translateY(10px);
+}
+
+/* Styles for the circuit path (general, not specific to background or progressive). */
+.circuit {
+    /* Defines the pattern of dashes and gaps used to draw the stroke. */
+    stroke-dasharray: 1000;
+    /* Defines the starting point of the dash pattern. Used for drawing animations. */
+    stroke-dashoffset: 1000;
+    /* Applies a drawing animation named 'drawPath'. */
+    animation: drawPath 3s ease-in-out infinite;
+}
+
+/* Styles for a specific circuit path with an animation delay. */
+.circuit-b {
+    /* Delays the start of the animation for this element. */
+    animation-delay: 1.5s;
+}
+
+/* Styles for 'node' elements (if any, not explicitly used in this animation). */
+.node {
+    /* Initially hidden. */
+    opacity: 0;
+    /* Applies a fade-in animation named 'fadeInNode'. */
+    animation: fadeInNode 0.5s ease-in-out forwards;
+}
+
+/* Animation delays for specific nodes, creating a staggered appearance. */
+.node:nth-child(2) { animation-delay: 1s; }
+.node:nth-child(3) { animation-delay: 2s; }
+.node:nth-child(4) { animation-delay: 3s; }
+
+/* Styles for the car element. */
+.car {
+    /* Applies a drop shadow effect to the car. */
+    filter: drop-shadow(0 0 8px rgba(226, 160, 74, 0.6));
+}
+
+/* Keyframe animation for drawing the circuit path. */
+@keyframes drawPath {
+    /* At the start of the animation. */
+    0% {
+        /* Fully hides the stroke. */
+        stroke-dashoffset: 1000;
+        /* Makes the element invisible. */
+        opacity: 0;
+    }
+    /* At 10% of the animation. */
+    10% {
+        /* Makes the element fully visible. */
+        opacity: 1;
+    }
+    /* At 50% of the animation. */
+    50% {
+        /* Fully draws the stroke. */
+        stroke-dashoffset: 0;
+        /* Keeps the element visible. */
+        opacity: 1;
+    }
+    /* At the end of the animation. */
+    100% {
+        /* Moves the stroke-dashoffset to create a 
+
+
+disappearing effect. */
+        stroke-dashoffset: -1000;
+        /* Makes the element invisible again. */
+        opacity: 0;
+    }
+}
+
+/* Keyframe animation for fading in elements. */
+@keyframes fadeInNode {
+    /* At the end of the animation. */
+    to {
+        /* Makes the element fully visible. */
+        opacity: 1;
+    }
+}
+
+
