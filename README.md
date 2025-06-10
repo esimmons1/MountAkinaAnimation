@@ -8,7 +8,7 @@ Language: HTML, CSS, JavaScript (SVG)
 
 What this is?    
 -----------------------------------
-This is a web-based visual animation project that simulates a car driving along the iconic touge of Mount Akina, heavily inspired by the popular anime and manga series Initial D. The animation progressively draws the mountain pass and features a car moving along the path.
+This is a web-based visual animation project that simulates a car driving along the iconic touge of Mount Akina from the popular anime and manga series Initial D. The animation progressively draws the mountain pass and features a car moving along the path.
 
 ---
 
@@ -25,6 +25,7 @@ What it does:
 How to run it:  
 -----------------------------------------------
 To run this animation, simply open the `index.html` file in any modern web browser. No special setup or server is required.
+You can also visit: https://esimmons1.github.io/MountAkinaAnimation/
 
 ---
 
@@ -44,7 +45,7 @@ How it works:
 
 Why I made it:  
 --------------------------------------
-This project was created to bring a piece of the Initial D world to life through web animation. It serves as a creative exercise in SVG manipulation and JavaScript animation, aiming to capture the essence of the iconic Mount Akina downhill.
+This project was created to bring a piece of the Initial D world to life through web animation. It serves as a creative exercise in SVG manipulation and JavaScript animation, aiming to capture the essence of the iconic Mount Akina downhill. I also wanted to have an animation on my website and I thought this would look cool.
 
 ---
 
@@ -62,6 +63,7 @@ Sources & Inspiration:
 ------------------------------------------------
 - Initial D (manga and anime series)
 - Mount Akina (Haruna), Gunma Prefecture, Japan
+- https://animejs.com, used their createmotionpath animation as a base for the project (They have a ton of really sick animations)
 
 ---
 
