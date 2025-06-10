@@ -24,7 +24,7 @@ What it does:
 
 How to run it:  
 -----------------------------------------------
-To run this animation, simply open the `index.html` file in any modern web browser. No special setup or server is required.
+To run this animation, simply open the `index.html` file in any modern web browser. No special setup or server is required.      
 You can also visit: https://esimmons1.github.io/MountAkinaAnimation/
 
 ---
