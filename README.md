@@ -1,7 +1,7 @@
 Mount Akina Animation
 =============
 
-Made by: Ellis Simmons, June 2025
+Made by: Ellis Simmons, June 2025      
 Language: HTML, CSS, JavaScript (SVG)
 
 ---
